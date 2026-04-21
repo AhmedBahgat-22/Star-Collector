@@ -121,7 +121,6 @@ The factor 0.8 makes the hit zone a little smaller (more fair for the player).
 
 # CONTRIBUTIONS
 
-# Each team member must briefly describe their contribution.
 
 # Team Member #
 
