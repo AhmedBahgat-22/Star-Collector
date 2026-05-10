@@ -1,197 +1,176 @@
-## COMPUTER GRAPHICS PROJECT REPORT
+# 🚀 Star Collector
 
-## SPRING 2026
+**Computer Graphics Final Project** | Spring 2026
 
-```
-Student ID: 220303904
-```
-```
-Full Name: Mahamadou M. TRAORE
-```
-```
-Student ID: 220303923
-```
-```
-Full Name: Ahmed Mahmoud bahagat Mohamed Abdelmoula
-```
-```
-Project Github
-Link:
-```
-```
-https://github.com/Mahamadou-M-Traore/Star-Collector
-```
-## INTRODUCTION
+---
 
-**What is your game?**
+## 👥 Team Members
 
-```
-Our game is called Star Collector. It is a browser game made with HTML, CSS, and
-JavaScript.
-The player controls a spaceship at the bottom of the screen.
-Stars and asteroids fall from the top of the screen.
-The player moves left and right to catch the stars and avoid the asteroids.
-The game uses the HTML Canvas API to draw everything on the screen.
-There are no extra libraries. Everything is built from zero with plain JavaScript.
-```
-**What is the objective of the game?**
+| | Student ID | Full Name |
+|---|---|---|
+| Member 1 | 220303923 | Ahmed Mahmoud Bahagat Mohamed Abdelmoula |
+| Member 2 | 220303904 | Mahamadou M. TRAORE |
 
+🔗 **GitHub Pages:** [Play the game here](https://yourusername.github.io/star-collector)
 
-The objective is to collect as many stars as possible and get the highest score.
-Each star gives the player 1 point per level (higher levels = more points per star).
-The player must avoid all asteroids. If the player touches one, the game is over.
-Every 10 stars, the game goes to a new level. Higher levels are faster and harder.
-The player tries to survive as long as possible and reach the highest level.
+---
 
+## 🎮 Introduction
 
-## GAME DESCRIPTION
+### What is the game?
 
-**How does the game work?**
+**Star Collector** is a browser game made with **HTML**, **CSS**, **JavaScript**, and **HTML5 Canvas**.
 
-```
-The game starts with a start screen. The player presses any key or clicks Start to begin.
-The spaceship appears at the bottom of the screen. Stars and asteroids fall from the top.
-The player uses the LEFT and RIGHT arrow keys to move the spaceship.
-When the spaceship touches a star, the star disappears and the score goes up.
-When the player collects 10 stars, the level goes up by 1.
-```
-- Objects fall faster and appear more often in higher levels.
-- The progress bar at the top shows how close you are to the next level.
-The game ends when the spaceship touches an asteroid.
-- An explosion animation plays (particles fly out).
-- The game over screen shows the final score and level.
-The player can click Play Again to restart from level 1.
+The player controls a **spaceship** at the bottom of the screen.  
+**Stars** and **asteroids** fall from the top of the screen.  
+The player moves **left and right** to catch the stars and avoid the asteroids.  
+All game objects are **PNG image files** drawn on the canvas.
 
-**What are the rules?**
+### What is the objective?
 
-```
-Rule 1: Use the LEFT and RIGHT arrow keys to move the spaceship.
-Rule 2: Collect falling STARS (yellow) to earn points.
-```
-- Each star is worth 1 point at level 1, 2 points at level 2, and so on.
-Rule 3: AVOID falling ASTEROIDS (brown). If you touch one, the game is over.
-Rule 4: Every 10 stars collected = Level Up.
-- Speed increases. More objects appear. The game gets harder.
-Rule 5: There is no time limit. The game ends only when you hit an asteroid.
-Rule 6: You can restart at any time after game over by clicking Play Again.
+- Collect as many **stars** ⭐ as possible to get the **highest score**.
+- Every **6 collected stars**, the level increases and the game becomes **faster**.
+- Avoid all **asteroids** ☄️. If the spaceship touches one, the **game is over**.
+- The **best score** is saved automatically using `localStorage`.
 
+---
 
-## GRAPHICS CONCEPTS USED
+## 🕹️ Game Description
 
-**What computer graphics concepts did you use? (e.g. Transformations, Collision**
+### How does the game work?
 
-**Detection, Animation, etc.) Explain how you used them.**
+1. The game starts with a **start screen**. Press any arrow key or click **Start** to begin.
+2. Stars and asteroids **fall from the top** of the screen.
+3. The player moves the spaceship **left and right** to collect stars and avoid asteroids.
+4. Every **6 collected stars**, the level goes up and objects fall **faster**.
+5. When the spaceship hits an asteroid, an **explosion** appears and the game ends.
+6. The player can click **Play Again** to restart.
 
-```
-We used five computer graphics concepts:
-```
-1. TRANSFORMATION (ctx.save / ctx.translate / ctx.rotate):
-We move the canvas origin to each object's center with ctx.translate().
-Then we rotate with ctx.rotate(). This spins stars and asteroids as they fall.
-The spaceship also tilts left or right when the player moves it.
-We use ctx.save() before and ctx.restore() after, so one rotation
-does not affect other objects. This is the standard transformation pattern.
-2. ANIMATION (requestAnimationFrame):
-We use requestAnimationFrame to run the game loop ~60 times per second.
-Every frame, all objects move a little. This creates smooth animation.
-The engine flame flickers because we use Math.random() for its height each frame.
-Stars and asteroids rotate a little more each frame (rotation += 0.05 per frame).
-3. RENDERING (HTML Canvas 2D API):
-We draw different shapes: triangle (spaceship body), circles (cockpit, glow),
-irregular polygons (asteroids), and 5-pointed star shapes (collectible stars).
-We use createLinearGradient() for the background and createRadialGradient()
-for the glow effect around each star. We also use ctx.globalAlpha for
-particle transparency during the explosion animation.
-4. INTERACTION (Event Listeners):
-We use document.addEventListener("keydown") and ("keyup") to read the keyboard.
-keydown: player presses arrow key -> spaceship starts moving (vx = speed).
-keyup: player releases key -> spaceship stops (vx = 0).
-We also use canvas.addEventListener("click") to detect button clicks.
-5. COLLISION DETECTION (Distance Formula):
-We treat each object as a circle with a radius.
-We calculate the distance between two object centers:
-distance = sqrt( (x1-x2)^2 + (y1-y2)^2 ) [Pythagorean theorem].
-If distance < (radius1 + radius2) * 0.8, they are colliding.
-The factor 0.8 makes the hit zone a little smaller (more fair for the player).
+### Rules
 
+| Rule | Description |
+|---|---|
+| ⬅️ ➡️ Move | Use **LEFT** and **RIGHT** arrow keys |
+| ⭐ Collect | Touch yellow **stars** to earn **1 point** per star |
+| ☄️ Avoid | Do not touch brown **asteroids** |
+| 🆙 Level Up | Every **6 stars** collected, speed increases |
+| 🏆 Best Score | Saved in the browser with **localStorage** |
 
-# SCREENSHOTS
+---
 
+## 🖥️ Graphics Concepts Used
 
-# Team Member #
+1. **Canvas Rendering** : All objects are drawn using `ctx.drawImage()` every frame (each frame = one picture drawn very fast, about 60 times per second).
 
-# CONTRIBUTIONS
+2. **2D Transformations** : `ctx.translate()` and `ctx.rotate()` are used to move and spin objects. Asteroids spin while falling. The spaceship tilts when moving. `ctx.save()` and `ctx.restore()` make sure each object rotates independently (without affecting the others).
+
+3. **Animation** : `requestAnimationFrame` runs the game loop about **60 times per second**. Objects move a little each frame, creating smooth animation.
+
+4. **Transparency** : `ctx.globalAlpha` fades the explosion image slowly from **1.0 to 0** (from fully visible to invisible).
+
+5. **Collision Detection** : The distance formula checks if two circles overlap.
+   ```
+   distance = sqrt( (x1-x2)^2 + (y1-y2)^2 )
+   ```
+   If the distance is less than the combined radius, it is a **collision**.
+
+6. **Interaction** : `keydown` and `keyup` events move and stop the spaceship. Canvas click events detect when the player clicks **Start** or **Play Again**.
+
+7. **Local Storage** : Added after **teacher recommendation**. `localStorage` saves the best score in the browser so it stays even after the page is closed or refreshed.
+
+---
+
+## 📁 Project Structure
 
 ```
-Mahamadou M. TRAORE — Game Logic
+star-collector/
+├── index.html        (main page, connects all files)
+├── styles.css        (page style and canvas layout)
+├── images/
+│   ├── background.png
+│   ├── spaceship.png
+│   ├── star.png
+│   ├── asteroid.png
+│   └── explosion.png
+└── js/
+    ├── canvas.js     (gets the canvas and drawing context)
+    ├── assets.js     (loads all images before game starts)
+    ├── state.js      (stores score, level, player, timers)
+    ├── spawn.js      (creates stars, asteroids, explosions)
+    ├── collision.js  (checks if objects are touching)
+    ├── update.js     (game logic, movement, level up)
+    ├── render.js     (draws everything on the canvas)
+    ├── input.js      (keyboard and mouse controls)
+    └── main.js       (runs the game loop)
 ```
-```
-I worked on the game logic (the update() function).
-I wrote the code that moves all objects every frame (position += velocity).
-I built the collision detection system using the distance formula.
-I created the spawn system: new stars appear every 90 frames,
-new asteroids appear every 60 frames, using frame counters.
-I built the level up system: every 10 stars, the level increases,
-fallSpeed increases, and spawn rates decrease (harder game).
-I wrote the keyboard event listeners (keydown / keyup) for player control.
-```
-# I also worked on boundary checking to keep the player inside the canvas.
 
-# Team Member #
+---
 
+## 👨‍💻 Contributions
+
+### Ahmed Mahmoud Bahagat (220303923)
+
+**Files:** `index.html`, `styles.css`, `js/canvas.js`, `js/state.js`, `js/spawn.js`, `js/update.js`
+
+- Created the page structure and connected all game files.
+- Designed the page style and canvas layout.
+- Set up the canvas and 2D drawing context.
+- Managed the game state, player data, and all game variables.
+- Built the spawn system for stars and asteroids.
+- Implemented the full game logic: movement, **level up every 6 stars**, speed increase.
+
+---
+
+### Mahamadou M. TRAORE (220303904)
+
+**Files:** `js/assets.js`, `js/collision.js`, `js/render.js`, `js/input.js`, `js/main.js`, `images/`
+
+- Loaded all game **PNG images** before the game starts.
+- Implemented **collision detection** using the distance formula.
+- Drew the background, player, stars, asteroids, explosion, HUD, start screen, and game over screen.
+- Added **keyboard and mouse** input controls.
+- Connected the main **game loop** using `requestAnimationFrame`.
+
+---
+
+## 📚 Conclusion
+
+### What we learned
+
+- How to draw and animate images on **HTML5 Canvas** using `ctx.drawImage()`.
+- How to use **transformations** (translate, rotate) to move and spin objects.
+- How to separate **game logic** (update) from **rendering** (draw) in a game loop.
+- How to detect **collisions** using the distance formula.
+- How to save data with **localStorage** (added after teacher recommendation).
+- How to split JavaScript into **multiple files** for better organization.
+
+### What we would improve
+
+- Add **sound effects** when collecting a star or hitting an asteroid.
+- Add **power-ups** such as a shield or double points.
+- Make some asteroids move in **diagonal or zigzag** patterns.
+- Add a **pause button**.
+- Make the game work on **mobile** with on-screen buttons.
+
+---
+
+## ▶️ How to Run
+
+### Option 1 - VS Code (recommended for development)
+Right-click `index.html` and select **Open with Live Server**.
+
+### Option 2 - Python local server
+```bash
+python3 -m http.server 8000
 ```
-Ahmed Bahgat — Graphics and Rendering
-```
-```
-I worked on all the visual parts of the game (the draw() functions).
-I drew the spaceship using a triangle shape and a circle for the cockpit.
-I added the tilting effect using ctx.rotate() and smooth interpolation.
-I drew the engine flame with a flickering effect using Math.random().
-I drew the 5-pointed stars using a trigonometry formula (outer and inner points).
-I drew the asteroids as irregular polygons with 5-7 sides.
-I built the explosion particle system with 24 particles that fade and fall.
-I designed the space background with a linear gradient and 100 twinkling dots.
-I made the HUD (heads-up display) with score, level, and a progress bar.
-```
-# I designed the start screen and the game over screen.
+Then open: `http://localhost:8000`
 
+### Option 3 - GitHub Pages (best for presentation)
+Upload the folder to GitHub and enable **GitHub Pages**.  
+The game will work on **any computer** with a browser and internet connection.
 
-# CONCLUSION
+---
 
-**What did you learn?**
+## 🛠️ Technologies Used
 
-```
-We learned many things from this project:
-```
-- We learned how to use the HTML Canvas API to build a game from zero.
-- We learned the game loop pattern: always update state first, then draw.
-This keeps the code clean and easy to understand.
-- We learned how to use ctx.save() and ctx.restore() for safe transformations.
-Without these, one rotation would affect all objects on screen.
-- We learned how to rotate and move objects independently using
-ctx.translate() and ctx.rotate().
-- We learned how to use JavaScript arrays to manage many objects at the same time.
-We add objects with push() and remove them with splice().
-- We learned how to detect collisions using the Pythagorean distance formula.
-- We learned how to use keyboard event listeners (keydown / keyup).
-- We learned how to increase difficulty over time by changing speed
-and spawn rate values as the level increases.
-- We learned how to split work between two team members and combine it.
-
-**What would you improve if you had more time?**
-
-```
-If we had more time, we would improve the game in these ways:
-```
-1. Sound effects: add sounds when collecting a star or hitting an asteroid.
-2. Enemy movement: make some asteroids move in zigzag patterns, not just straight down.
-3. Power-ups: add a shield (protect the player for 3 seconds) or double points item.
-4. Better graphics: use real image files for the spaceship and objects
-instead of shapes drawn with code.
-5. High score system: save the best score in localStorage so it stays
-between games.
-6. Mobile support: add on-screen buttons so the game works on phones and tablets.
-7. More levels: add a boss at level 10 that moves side to side and shoots back.
-8. Pause feature: let the player pause and resume the game at any time.
-
-
+`HTML` `CSS` `JavaScript` `HTML5 Canvas` `localStorage` `PNG Sprites`
